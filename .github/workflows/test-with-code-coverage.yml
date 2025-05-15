@@ -3,11 +3,7 @@ name: Test with code coverage
 on:
   push:
     branches:
-      - 'main'
-      - 'dev'
-  pull_request:
-    types: [ opened, synchronize, reopened ]
-
+      - '**'
 env:
   DOTNET_INSTALL_DIR: "./.dotnet"
 
@@ -26,6 +22,7 @@ jobs:
           dotnet-version: '9.0.x'
       - name: chown
         run: |
+          ls /home
           sudo chown -R $USER:$USER /home/runneradmin
       - name: Install dependencies
         run: dotnet restore --verbosity quiet
